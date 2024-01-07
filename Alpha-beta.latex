@@ -1,0 +1,268 @@
+\documentclass{beamer}
+\usetheme{uic}
+\usepackage{amsfonts,amsmath,oldgerm,algorithmic,algorithm}
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+\newcommand{\hrefcol}[2]{\textcolor{uihteal}{\href{#1}{#2}}}
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+% Please see Section 18.1 of Beamer User Guide for all the options \usefonttheme provides
+\usefonttheme[onlymath]{serif}
+% \usefonttheme{serif} % use this if you would like Serif font throughout (and not just for math)
+
+\title{Implementation the Alpha-Beta Pruning }
+\titlebackground{images/uic_halls1.jpg}
+% an asterisk will split the background:
+% \titlebackground*{images/uic_seo.jpg}
+\subtitle{in any Board game}
+% This can be adjusted accordingly for longer titles
+\newcommand{\titleboxwidth}{0.45\textwidth}
+
+\author{\href{mailto:pratyushpritam88@gmail.com}{Group 6}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% default is no footline, but page numbers are incredibly useful for the audience to ask questions later
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Introduction to Alpha Beta Pruning}
+\textbf{Alpha-beta pruning} is the way through which we can find the \textbf{optimal mini max} solution while avoiding searching sub trees of moves which won't be selected. In the search tree for a \textbf{two-player} game, there are two kinds of nodes, one node represents your move and another node represent opponent's move
+
+\textbf{Alpha--bets pruning comes from two parameters}
+They describe bounds on the values that appear anywhere along the path under consideration:
+\begin{itemize}
+\item $\alpha$ = best value(i.e., highest value) choice found so far along the path for MAX
+\item $\beta$ = best value(i.e., lowest value) choice found so far along the path for MIN
+
+
+
+\end{itemize}
+\end{frame}
+
+% -- page 3 start
+
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Alpha Beta Pruning}
+
+\begin{itemize}
+\item Alpha-beta pruning gets its name from two bounds that are passed along during the calculation, which restrict the set of possible solutions based on the portion of the search tree that has already been seen. Sprcifically
+\item $\beta$ is the minimum upper bound of possible solutions.
+\item $\alpha$ is the maximum lower bound of possible solutions.
+\item Thus, when any new node is being considered as a possible path to the solution, it can only work if
+
+ \textbf{ \fbox{$\alpha$ \le N \le $\beta$}}
+\textbf  where N is the current estimate of the value of the node 
+\end{itemize}
+\end{frame}
+% -- page 4 
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Alpha Beta Pruning}
+
+\begin{itemize}
+\item Alpha-beta pruning is a modified version of the minimax algorithm. It is an optimization technique for the minimax algorithm.
+\item As we have seen in the minimax search algorithm that the number of game states it has to examine are exponential in depth of the tree. Since we cannot eliminate the exponent, but we can cut it to half.
+\item Hence there is a technique by which without checking each node of the game tree we can compute the correct minimax decision, and this technique is called pruning. This involves two threshold parameter Alpha and beta for future expansion, so it is called alpha-beta pruning. It is also called as Alpha-Beta Algorithm.
+
+
+\end{itemize}
+\end{frame}
+% -- page 5
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Alpha Beta Pruning}
+
+
+Alpha-beta pruning can be applied at any depth of a tree, and sometimes it not only prune the tree leaves but also entire sub-tree.
+The two-parameter can be defined as:
+\begin{itemize}
+    \item $\alpha$ The best (highest-value) choice we have found so far at any point along the path of Maximizer. The initial value of alpha is -∞.
+    \item $\beta$  The best (lowest-value) choice we have found so far at any point along the path of Minimizer. The initial value of beta is +∞.
+\end{itemize}
+\item The Alpha-beta pruning to a standard minimax algorithm returns the same move as the standard algorithm does, but it removes all the nodes which are not really affecting the final decision but making algorithm slow. Hence by pruning these nodes, it makes the algorithm fast.
+
+\end{frame}
+
+
+% -- page 6
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Literature survey}
+
+
+While Alpha-Beta Pruning is primarily used in game playing scenarios, its underlying principle of efficiently exploring decision spaces can be applied in various practical domains. Let's consider a scenario where a similar optimization approach is employed in practice:
+\textbf{Problem:}
+\begin{itemize}
+    \item \textbf{Decision Space} Selecting an optimal portfolio of financial assets to maximize returns while managing risks.
+\end{itemize}
+\textbf{Integration Steps:}
+\begin{itemize}
+    \item \textbf{1. Data Gathering} Collect historical financial data, including asset prices, volatility, and other relevant metrics.
+    \item \textbf{2. Model Training} Develop a financial model that simulates the performance of different portfolios based on historical data
+
+\end{itemize}
+\end{frame}
+
+% -- page 7
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Four Dot Joiner Game Rules:}
+
+
+\item  Objective:
+Connect four dots in a row either horizontally, vertically, or diagonally.
+
+\item Game Board:
+A grid of dots. Players take turns connecting adjacent dots with a line. The lines can only be horizontal or vertical, not diagonal.
+
+\item Turns:
+Players alternate turns, drawing one line at a time.
+
+\item Winning:
+The player who completes a row of four connected dots first wins.
+
+\item Alpha-Beta Pruning Algorithm:
+Alpha-beta pruning is a minimax algorithm used to evaluate game positions efficiently. It explores the game tree while avoiding the evaluation of unnecessary branches.
+
+
+
+\end{frame}
+% -- page 7
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Four Dot Joiner Game Rules:}
+
+\item Node Evaluation:
+Each node in the game tree represents a possible game state. Assign a score to each node based on the current state of the game. Positive scores are good for the maximizing player, and negative scores are good for the minimizing player.
+
+\item This pseudocode is a basic template for the alpha-beta pruning algorithm. You'll need to adapt it to your specific implementation details, such as how the game state is represented, what actions are available at each state, and how the utility function evaluates the desirability of a given game state.
+
+\item Remember that efficient implementation of this algorithm requires careful consideration of your game state representation and the pruning conditions.
+
+\end{frame}
+
+%-- page 9 
+\footlinecolor{uicblue}
+\begin{frame}{Four Dot Joiner Game Rules:}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{gamephoto.jpeg}
+
+    \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+
+% -- page 8
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Real-world Impact:}
+
+
+\textbf{Integration Steps:}
+\begin{itemize}
+    \item \textbf{3. Decision Space Exploration:} Implement an algorithm inspired by Alpha-Beta Pruning to efficiently explore various portfolio combinations by discarding less promising options early in the analysis.
+    \item \textbf {4. Risk Management:}  Incorporate risk management strategies, analogous to pruning in Alpha-Beta, to eliminate portfolios that pose unacceptable levels of risk.
+    \item \textbf{5. Optimal Portfolio Selection:} Identify the portfolio that maximizes returns given the investor's risk tolerance, time horizon, and financial goals.
+\end{itemize}
+\textbf{Efficiency Showcase:} Compare the performance of the portfolio optimization algorithm with and without pruning strategies. Measure the reduction in computational resources and time required for decision-making. 
+\end{frame}
+
+% -- page 9
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Real-world Impact}
+
+\begin{itemize}
+    \item Efficient portfolio optimization can significantly benefit investment professionals and individuals managing their financial portfolios. By applying principles akin to Alpha-Beta Pruning, the decision-making process becomes more streamlined and computationally efficient, allowing for quicker and more effective portfolio adjustments.
+\end{itemize}
+It's important to note that while the specific algorithmic details may differ from Alpha-Beta Pruning, the core idea of optimizing decision spaces and resource allocation is a common thread. Practitioners often adapt these principles to suit the specific requirements of different domains, showcasing the versatility of optimization concepts in various practical applications.
+\end{frame}
+
+
+
+% -- page 10
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Model in pratice}
+While Alpha-Beta Pruning, as a specific algorithm, may not have a direct role in healthcare due to its roots in game theory, the broader concept of efficient decision-making and resource allocation has relevance. Here are potential ways similar principles could influence the future of decision-making in healthcare:
+\begin{itemize}
+    \item \textbf{1. Optimizing Treatment Plans:} As healthcare becomes more personalized with advancements like precision medicine, decision-making algorithms inspired by optimization principles could be applied to tailor treatment plans based on individual patient characteristics, optimizing for both efficacy and reduced side effects.
+    \item \textbf{2. Resource Allocation in Hospitals: }Efficient allocation of resources, such as hospital beds, medical staff, and equipment, is crucial. Future healthcare systems could employ optimization algorithms to dynamically allocate resources based on patient needs, reducing waiting times and improving overall patient care.
+
+\end{itemize}
+\end{frame}
+% -- page 11
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Model in pratice}
+\begin{itemize}
+    \item \textbf{3. Clinical Trial Design:} Designing and conducting clinical trials is resource-intensive. Future applications could involve optimizing trial designs, patient recruitment strategies, and data collection methods to accelerate the discovery of new treatments and interventions.
+    \item \textbf{4. Predictive Analytics for Disease Outbreaks:} Similar to how Alpha-Beta Pruning optimizes decision spaces, future healthcare systems might leverage predictive analytics and machine learning to efficiently analyze vast datasets, aiding in early detection and containment of disease outbreaks.
+    \item \textbf{5. Telemedicine and Remote Patient Monitoring: }In remote healthcare scenarios, optimization principles could be applied to streamline decision-making in telemedicine consultations, ensuring that healthcare providers focus on the most critical aspects of patient care. 
+
+\end{itemize}
+\end{frame}
+% -- page 12
+\footlinecolor{uicblue}
+
+
+\begin{frame}{Model in pratice}
+\begin{itemize}
+    \item \textbf{6. Operational Efficiency in Healthcare Administration: } The optimization principles might be applied to administrative processes in healthcare institutions, improving efficiency in areas such as appointment scheduling, billing, and managing patient records.
+    \item \textbf{7. AI-Assisted Diagnosis and Treatment Planning :} Integrating advanced AI models for diagnosis and treatment planning could involve optimization techniques to efficiently explore various medical decision spaces, leading to quicker and more accurate decisions.
+\end{itemize}
+
+\end{frame}
+% -- page 13
+\footlinecolor{uicblue}
+\begin{frame}{Model in pratice}
+As technology continues to advance, the future role of decision-making optimization in healthcare could take various forms. While Alpha-Beta Pruning may not be directly translatable, the underlying principles of optimizing decision spaces and resource allocation are likely to influence the development of more efficient and effective healthcare systems.
+\end{frame}
+% -- page 14
+\footlinecolor{uicblue}
+\begin{frame}{Pseudocode}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Phesudocode.jpeg}
+    \caption{Pseudocpde for $alpha$ - $beta$}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\end{frame}
+% -- page 15
+\footlinecolor{uicblue}
+\begin{frame}{End of Presentation}
+Presented and Prepared By: 
+\begin{itemize}
+    \item Pratyush Pritam
+\end{itemize}
+    \begin{itemize}
+        
+        \item \iter Pridarshini Madhubala Pradhan
+        \item \iter Pratyus Pradhan
+        \item Jagdeesh Pradhan
+        \item Siva Kumar Pradhan
+        \item Priyanshu Pradhan
+    \end{itemize}
+
+
+
+\end{frame}
+
+\end{document}
